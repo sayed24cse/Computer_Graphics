@@ -1,0 +1,193 @@
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <math.h>
+
+#define PI 3.1416
+
+// ==========================
+// ☀️ SUN DRAW FUNCTION
+// ==========================
+void drawSun(float cx, float cy, float radius) {
+    glColor3f(1.0, 0.84, 0.0);  // Yellow
+    glBegin(GL_POLYGON);
+    for (int i = 0; i < 100; i++) {
+        float angle = 2.0f * PI * i / 100;
+        glVertex2f(cx + radius * cos(angle), cy + radius * sin(angle));
+    }
+    glEnd();
+}
+
+// ==========================
+// 🐦 BIRD DRAW FUNCTION
+// ==========================
+void drawBird(float x, float y) {
+    glColor3f(0.0, 0.0, 0.0);  // Black birds
+    glBegin(GL_LINE_STRIP);
+        glVertex2f(x, y);
+        glVertex2f(x + 5, y + 5);
+        glVertex2f(x + 10, y);
+    glEnd();
+}
+
+// ==========================
+// 🌲 TREE DRAW FUNCTION
+// ==========================
+void drawTree(float x_offset) {
+    // Trunk
+    glColor3f(0.36, 0.25, 0.20); // Brown
+    glBegin(GL_POLYGON);
+        glVertex3f(x_offset - 2, -30, 0.0);
+        glVertex3f(x_offset + 2, -30, 0.0);
+        glVertex3f(x_offset + 2, 10, 0.0);
+        glVertex3f(x_offset - 2, 10, 0.0);
+    glEnd();
+
+    // Leaves
+    glColor3f(0.0, 0.5, 0.0); // Green
+    glBegin(GL_TRIANGLES);
+        glVertex3f(x_offset - 10, 10, 0.0);
+        glVertex3f(x_offset + 10, 10, 0.0);
+        glVertex3f(x_offset, 30, 0.0);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glVertex3f(x_offset - 8, 20, 0.0);
+        glVertex3f(x_offset + 8, 20, 0.0);
+        glVertex3f(x_offset, 38, 0.0);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glVertex3f(x_offset - 6, 30, 0.0);
+        glVertex3f(x_offset + 6, 30, 0.0);
+        glVertex3f(x_offset, 45, 0.0);
+    glEnd();
+}
+
+// ==========================
+// 🏠 HOUSE DRAW FUNCTION
+// ==========================
+void drawHouse(float x_offset) {
+    // Roof
+    glColor3f(0.65, 0.16, 0.16); // Dark Red
+    glBegin(GL_POLYGON);
+        glVertex3f(x_offset - 10, 20, 0.0);
+        glVertex3f(x_offset + 50, 20, 0.0);
+        glVertex3f(x_offset + 20, 50, 0.0);
+    glEnd();
+
+    // Main body
+    glColor3f(0.87, 0.72, 0.53); // Beige
+    glBegin(GL_POLYGON);
+        glVertex3f(x_offset - 5, -30, 0.0);
+        glVertex3f(x_offset + 45, -30, 0.0);
+        glVertex3f(x_offset + 45, 20, 0.0);
+        glVertex3f(x_offset - 5, 20, 0.0);
+    glEnd();
+
+    // Door
+    glColor3f(0.4, 0.26, 0.13); // Brown
+    glBegin(GL_POLYGON);
+        glVertex3f(x_offset + 15, -30, 0.0);
+        glVertex3f(x_offset + 25, -30, 0.0);
+        glVertex3f(x_offset + 25, 0, 0.0);
+        glVertex3f(x_offset + 15, 0, 0.0);
+    glEnd();
+
+    // Windows
+    glColor3f(0.7, 0.9, 1.0); // Sky blue
+    glBegin(GL_POLYGON); // Left
+        glVertex3f(x_offset + 2, -5, 0.0);
+        glVertex3f(x_offset + 12, -5, 0.0);
+        glVertex3f(x_offset + 12, 5, 0.0);
+        glVertex3f(x_offset + 2, 5, 0.0);
+    glEnd();
+
+    glBegin(GL_POLYGON); // Right
+        glVertex3f(x_offset + 28, -5, 0.0);
+        glVertex3f(x_offset + 38, -5, 0.0);
+        glVertex3f(x_offset + 38, 5, 0.0);
+        glVertex3f(x_offset + 28, 5, 0.0);
+    glEnd();
+}
+
+// ==========================
+// 🌊 RIVER DRAW FUNCTION
+// ==========================
+void drawRiver() {
+    glColor3f(0.0, 0.5, 1.0); // Blue river
+    glBegin(GL_POLYGON);
+        glVertex3f(-100, -70, 0.0);
+        glVertex3f(100, -70, 0.0);
+        glVertex3f(90, -60, 0.0);
+        glVertex3f(-90, -60, 0.0);
+    glEnd();
+}
+
+// ==========================
+// 🎬 DISPLAY FUNCTION
+// ==========================
+void display(void) {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Sky
+    glColor3f(0.53, 0.81, 0.98); // Sky blue
+    glBegin(GL_POLYGON);
+        glVertex3f(-100, 0, 0.0);
+        glVertex3f(100, 0, 0.0);
+        glVertex3f(100, 100, 0.0);
+        glVertex3f(-100, 100, 0.0);
+    glEnd();
+
+    // Ground
+    glColor3f(0.42, 0.56, 0.14); // Green
+    glBegin(GL_POLYGON);
+        glVertex3f(-100, -100, 0.0);
+        glVertex3f(100, -100, 0.0);
+        glVertex3f(100, 0, 0.0);
+        glVertex3f(-100, 0, 0.0);
+    glEnd();
+
+    // River
+    drawRiver();
+
+    // Sun
+    drawSun(70, 70, 10);
+
+    // Birds
+    drawBird(-60, 75);
+    drawBird(-40, 78);
+    drawBird(-20, 75);
+
+    // House
+    drawHouse(-20);
+
+    // Trees
+    drawTree(-85);
+    drawTree(50);
+    drawTree(90);
+
+    glFlush(); // Render everything
+}
+
+// ==========================
+// ⚙️ INIT FUNCTION
+// ==========================
+void init(void) {
+    glClearColor(0.0, 0.0, 0.0, 0.0); // Black background
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-100, 100, -100, 100, -1.0, 1.0); // 2D view
+}
+
+// ==========================
+// 🚀 MAIN FUNCTION
+// ==========================
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("🏡 Scenic View with One House, Trees, Sun, Birds & River 🌳☀️🐦🌊");
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
