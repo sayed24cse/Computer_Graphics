@@ -14,7 +14,7 @@ void display(void)
         glVertex3f(0, 40, 0.0);          // Top (peak) of triangle
     glEnd();                             // End the triangle polygon
 
-    //raw Rectangle
+    //Draw Rectangle
     glColor3f(0.1, 0.5, 0.3);            // Set color to dark green
     glBegin(GL_POLYGON);                // Begin a polygon (rectangle)
         glVertex3f(-30, -40, 0.0);       // Bottom-left corner of rectangle
