@@ -1,5 +1,5 @@
-#include <GL/gl.h>
-#include <GL/glut.h>
+#include <GL/gl.h>          // OpenGL functions for rendering
+#include <GL/glut.h>        // GLUT library for windowing and event handling
 
 // Display callback function
 void display(void)
