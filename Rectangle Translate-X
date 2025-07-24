@@ -7,7 +7,7 @@
 #endif
 
 float x_position = 0.0;            // X-coordinate of the square's position
-float speed = 0.5;                 // Movement speed per frame x
+float speed = 0.5;                 // Movement speed per frame X
 
 //Display Function
 void display()
