@@ -72,7 +72,7 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH); // Enable double buffering, RGBA color, and depth buffer
     glutInitWindowSize(500, 500);                             // Set window size to 500x500 pixels
     glutInitWindowPosition(100, 100);                         // Set window position on screen
-    glutCreateWindow("Rectangle Translate-X");                  // Create the window with an empty title
+    glutCreateWindow("Rectangle Translate-Z");                  // Create the window with an empty title
 
     initOpenGL();                     // Initialize OpenGL settings
     glutDisplayFunc(display);        // Register display function
