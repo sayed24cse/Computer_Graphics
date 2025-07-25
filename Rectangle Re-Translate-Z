@@ -56,11 +56,17 @@ void timer(int)
     glutPostRedisplay();                // Mark the window to be redisplayed
     glutTimerFunc(60 / 60, timer, 0); // Call timer() again after ~16ms (60 FPS)
 
-    y_position += speed;               // Move square to the right
+     y_position += speed;               // Move square to the right
 
     // If square reaches top or bottom edge, reverse direction
     if (y_position - 10 > 100)
         y_position = -100 -10;
+
+    /*y_position -= speed;               // Move square to the right
+
+    // If square reaches top or bottom edge, reverse direction
+    if (y_position - 10 <= -100)
+        y_position = 100 + 10;*/
 }
 
 //Main Function
