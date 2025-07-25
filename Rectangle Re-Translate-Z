@@ -6,7 +6,6 @@
 #include <GL/glut.h>
 #endif
 
-float x_position = 0.0;
 float y_position = 0.0;            // X-coordinate of the square's position
 float speed = 0.5;                 // Movement speed per frame X
 
@@ -16,8 +15,7 @@ void display()
     glClear(GL_COLOR_BUFFER_BIT);  // Clear the screen with background color
     glLoadIdentity();              // Reset current transformation matrix
 
-    glTranslated(y_position, 0.0, 0.0);     // Apply X translation
-    glTranslated(0.0, y_position, 0.0);   // Apply Y translation
+    glTranslated(y_position, y_position, 0.0);     // Apply X and Y translation
 
     //Draw Rectangle
     glBegin(GL_POLYGON);           // Start drawing a filled polygon (square)
