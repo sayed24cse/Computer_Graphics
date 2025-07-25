@@ -61,6 +61,12 @@ void timer(int)
     // If square reaches top or bottom edge, reverse direction
     if (x_position - 10 > 100)
         x_position = -100 -10;
+
+    /*x_position -= speed;               // Move square to the right
+
+    // If square reaches top or bottom edge, reverse direction
+    if (x_position - 10 <= -100)
+        x_position = 100 + 10;*/
 }
 
 //Main Function
